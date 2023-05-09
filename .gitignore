@@ -36,3 +36,6 @@
 
 # macOS stuff
 **/.DS_Store
+
+# Rails bundels
+/vendor/bundle/
