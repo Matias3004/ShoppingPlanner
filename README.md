@@ -1,4 +1,6 @@
 # README
+This Rails application "Lod00wkApp" is the ultimate tool to set your's shopping to the next level!
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
