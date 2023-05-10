@@ -39,3 +39,6 @@
 
 # Rails bundels
 /vendor/bundle/
+
+# VSCode
+/.vscode
