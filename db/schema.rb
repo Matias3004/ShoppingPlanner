@@ -10,21 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_203043) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_142548) do
   create_table "product_lists", force: :cascade do |t|
-    t.string "productList_id"
+    t.string "productListName"
     t.string "description"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_product_lists_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "quantity"
-    t.integer "productList_id", null: false
+    t.integer "product_list_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["productList_id"], name: "index_products_on_productList_id"
+    t.index ["product_list_id"], name: "index_products_on_product_list_id"
   end
 
   create_table "recipe_elements", force: :cascade do |t|
@@ -39,24 +41,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_203043) do
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "userEmail_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["userEmail_id"], name: "index_recipes_on_userEmail_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "login"
-    t.string "password"
-    t.integer "productList_id", null: false
+    t.string "email", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["productList_id"], name: "index_users_on_productList_id"
+    t.string "password_digest"
   end
 
-  add_foreign_key "products", "productLists"
+  add_foreign_key "product_lists", "users"
+  add_foreign_key "products", "product_lists"
   add_foreign_key "recipe_elements", "recipes"
-  add_foreign_key "recipes", "userEmails"
-  add_foreign_key "users", "productLists"
+  add_foreign_key "recipes", "users"
 end

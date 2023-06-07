@@ -1,2 +1,3 @@
 class ProductList < ApplicationRecord
+    belongs_to :user
 end

@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
     create_table :products do |t|
       t.string :name
       t.string :quantity
-      t.references :productList, null: false, foreign_key: true
+      t.references :product_list, null: false, foreign_key: true
 
       t.timestamps
     end

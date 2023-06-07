@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  belongs_to :productList
 
   has_secure_password
 
-  validates :login, presence: true, uniqueness: true, length: {minimum:3, maximum:20}
-  validates :email, presence: true, uniqueness: true
+  validates :name, presence: true, length: {minimum:3, maximum:20}
+  validates :email, presence: true, uniqueness: true, length: { minimum: 6, maximum: 30 }
+  validates :password, presence: true, length: { minimum: 6 }
 end
