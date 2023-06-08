@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @fridge %>
+
+<div>
+  <%= link_to "Edit this fridge", edit_fridge_path(@fridge) %> |
+  <%= link_to "Back to fridges", fridges_path %>
+
+  <%= button_to "Destroy this fridge", @fridge, method: :delete %>
+</div>

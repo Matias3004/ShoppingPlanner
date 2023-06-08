@@ -1,0 +1,15 @@
+current directory: /home/jacek/Desktop/PSIM/example/ShoppingPlanner/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+/home/jacek/.asdf/installs/ruby/3.0.0/bin/ruby -I /home/jacek/.asdf/installs/ruby/3.0.0/lib/ruby/3.0.0 -r ./siteconf20230607-5977-fq2xm6.rb extconf.rb
+creating Makefile
+
+current directory: /home/jacek/Desktop/PSIM/example/ShoppingPlanner/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /home/jacek/Desktop/PSIM/example/ShoppingPlanner/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /home/jacek/Desktop/PSIM/example/ShoppingPlanner/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20230607-5977-9u0hpd/bootsnap
