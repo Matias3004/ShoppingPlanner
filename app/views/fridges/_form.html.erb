@@ -1,4 +1,4 @@
-<%= form_with(model: fridge) do |form| %>
+<%= form_for [@user, @fridge] do |form| %>
   <% if fridge.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(fridge.errors.count, "error") %> prohibited this fridge from being saved:</h2>
@@ -13,12 +13,7 @@
 
   <div>
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.text_field :name, id: :fridge_name %>
   </div>
 
   <div>

@@ -1,2 +1,21 @@
 <h1>Welcome in Lod00wkApp</h1>
 <h3>Current time is: <%= Time.now %></h3>
+<% if logged_in? %>
+  <%= link_to "Nowa lodówka", new_user_fridge_path(@current_user) %>
+
+    <ul>
+      <% @current_user.fridges.each do |fridge| %>
+        <li><%= fridge.name %> | 
+          <%= link_to "Wejdź do tej lodówki", edit_user_fridge_path(user_id: @current_user.id, id: fridge.id) %>
+          <ul>
+            <% fridge.fridge_elements.each do |fridge_element| %>
+              <li>
+                <%= fridge_element.name %> | <%= fridge_element.quantity %>
+              </li>
+            <%end%>
+          </ul>
+        </li>
+      <%end%>
+    </ul>
+
+<% end %>

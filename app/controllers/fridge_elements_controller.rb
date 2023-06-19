@@ -12,7 +12,9 @@ class FridgeElementsController < ApplicationController
 
   # GET /fridge_elements/new
   def new
-    @fridge_element = FridgeElement.new
+    @user = User.find(params[:user_id])
+    @fridge = Fridge.find(params[:fridge_id])
+    @fridge_element = @fridge.fridge_elements.new
   end
 
   # GET /fridge_elements/1/edit
@@ -21,11 +23,13 @@ class FridgeElementsController < ApplicationController
 
   # POST /fridge_elements or /fridge_elements.json
   def create
-    @fridge_element = FridgeElement.new(fridge_element_params)
+    @user = User.find(params[:user_id])
+    @fridge = Fridge.find(params[:fridge_id])
+    @fridge_element = @fridge.fridge_elements.new(fridge_element_params)
 
     respond_to do |format|
       if @fridge_element.save
-        format.html { redirect_to fridge_element_url(@fridge_element), notice: "Fridge element was successfully created." }
+        format.html { redirect_to [@user, @fridge], notice: "Fridge element was successfully created." }
         format.json { render :show, status: :created, location: @fridge_element }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +42,7 @@ class FridgeElementsController < ApplicationController
   def update
     respond_to do |format|
       if @fridge_element.update(fridge_element_params)
-        format.html { redirect_to fridge_element_url(@fridge_element), notice: "Fridge element was successfully updated." }
+        format.html { redirect_to redirect_to [@user, @fridge], notice: "Fridge element was successfully updated." }
         format.json { render :show, status: :ok, location: @fridge_element }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,6 +64,8 @@ class FridgeElementsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fridge_element
+      @user = User.find(params[:user_id])
+      @fridge = Fridge.find(params[:fridge_id])
       @fridge_element = FridgeElement.find(params[:id])
     end
 
