@@ -12,7 +12,9 @@ class RecipeElementsController < ApplicationController
 
   # GET /recipe_elements/new
   def new
-    @recipe_element = RecipeElement.new
+    @user = User.find(params[:user_id])
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_element = @recipe.recipe_elements.new
   end
 
   # GET /recipe_elements/1/edit
@@ -21,11 +23,13 @@ class RecipeElementsController < ApplicationController
 
   # POST /recipe_elements or /recipe_elements.json
   def create
-    @recipe_element = RecipeElement.new(recipe_element_params)
+    @user = User.find(params[:user_id])
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_element = @recipe.recipe_elements.new(recipe_element_params)
 
     respond_to do |format|
       if @recipe_element.save
-        format.html { redirect_to recipe_element_url(@recipe_element), notice: "Recipe element was successfully created." }
+        format.html { redirect_to [@user, @recipe], notice: "Recipe element was successfully created." }
         format.json { render :show, status: :created, location: @recipe_element }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +42,7 @@ class RecipeElementsController < ApplicationController
   def update
     respond_to do |format|
       if @recipe_element.update(recipe_element_params)
-        format.html { redirect_to recipe_element_url(@recipe_element), notice: "Recipe element was successfully updated." }
+        format.html { redirect_to [@user, @recipe], notice: "Recipe element was successfully updated." }
         format.json { render :show, status: :ok, location: @recipe_element }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,6 +64,8 @@ class RecipeElementsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe_element
+      @user = User.find(params[:user_id])
+      @recipe = Recipe.find(params[:recipe_id])
       @recipe_element = RecipeElement.find(params[:id])
     end
 

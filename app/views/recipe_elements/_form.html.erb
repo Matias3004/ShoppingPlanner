@@ -1,4 +1,4 @@
-<%= form_with(model: recipe_element) do |form| %>
+<%= form_for [@user, @recipe, @recipe_element] do |form| %>
   <% if recipe_element.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(recipe_element.errors.count, "error") %> prohibited this recipe_element from being saved:</h2>
@@ -19,11 +19,6 @@
   <div>
     <%= form.label :quantity, style: "display: block" %>
     <%= form.number_field :quantity %>
-  </div>
-
-  <div>
-    <%= form.label :recipe_id, style: "display: block" %>
-    <%= form.text_field :recipe_id %>
   </div>
 
   <div>
