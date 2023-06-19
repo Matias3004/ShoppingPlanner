@@ -12,7 +12,8 @@ class FridgesController < ApplicationController
 
   # GET /fridges/new
   def new
-    @fridge = Fridge.new
+    @user = User.find(params[:user_id])
+    @fridge = @user.fridges.new
   end
 
   # GET /fridges/1/edit
@@ -21,11 +22,13 @@ class FridgesController < ApplicationController
 
   # POST /fridges or /fridges.json
   def create
-    @fridge = Fridge.new(fridge_params)
+    @user = User.find(params[:user_id])
+    @fridge = @user.fridges.new(fridge_params)
+    @fridge.user = current_user
 
     respond_to do |format|
       if @fridge.save
-        format.html { redirect_to fridge_url(@fridge), notice: "Fridge was successfully created." }
+        format.html { redirect_to [@user, @fridge], notice: "Fridge was successfully created." }
         format.json { render :show, status: :created, location: @fridge }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +41,7 @@ class FridgesController < ApplicationController
   def update
     respond_to do |format|
       if @fridge.update(fridge_params)
-        format.html { redirect_to fridge_url(@fridge), notice: "Fridge was successfully updated." }
+        format.html { redirect_to [@user, @fridge], notice: "Fridge was successfully updated." }
         format.json { render :show, status: :ok, location: @fridge }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -60,6 +63,7 @@ class FridgesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fridge
+      @user = User.find(params[:user_id])
       @fridge = Fridge.find(params[:id])
     end
 

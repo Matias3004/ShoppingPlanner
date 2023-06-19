@@ -1,4 +1,4 @@
-<%= form_with(model: fridge_element) do |form| %>
+<%= form_for [@user, @fridge, @fridge_element] do |form| %>
   <% if fridge_element.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(fridge_element.errors.count, "error") %> prohibited this fridge_element from being saved:</h2>
@@ -20,12 +20,7 @@
     <%= form.label :quantity, style: "display: block" %>
     <%= form.number_field :quantity %>
   </div>
-
-  <div>
-    <%= form.label :fridge_id, style: "display: block" %>
-    <%= form.text_field :fridge_id %>
-  </div>
-
+  
   <div>
     <%= form.submit %>
   </div>

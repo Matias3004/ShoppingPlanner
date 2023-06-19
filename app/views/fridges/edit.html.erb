@@ -1,10 +1,24 @@
-<h1>Editing fridge</h1>
+<h1>Główna strona lodówki:</h1>
+<h2><%= @fridge.name%></h2>
 
 <%= render "form", fridge: @fridge %>
 
 <br>
+<div>
+  <ul>
+    <% @fridge.fridge_elements.each do |fridge_element| %>
+      <li>
+        <%= fridge_element.name %> | <%= fridge_element.quantity %>
+      </li>
+    <%end%>
+  </ul>
+</div>
+
+<hr>
+
+<%= link_to "Dodaj produkt", new_user_fridge_fridge_element_path(@user, @fridge) %>
 
 <div>
-  <%= link_to "Show this fridge", @fridge %> |
-  <%= link_to "Back to fridges", fridges_path %>
+
+  <%= link_to "Back", root_path %>
 </div>

@@ -11,14 +11,16 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      Zalogowany jako <%= current_user.name %>
-      <%= link_to "Profil", current_user %>
-      <%= link_to "Wyloguj", logout_path, method: :delete %>
-    <% else %>
-      <%= link_to "Zaloguj", login_path %>
-    <% end %>
-
+    <ul>
+      <li><%= link_to "Strona główna", root_path %></li>
+      <% if logged_in? %>
+        <li><%= link_to current_user.name, current_user %></li>
+        <li><%= link_to "Wyloguj", logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Zaloguj", login_path %></li>
+      <% end %>
+    </ul>
+    
     <%= yield %>
   </body>
 </html>

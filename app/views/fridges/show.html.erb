@@ -3,8 +3,8 @@
 <%= render @fridge %>
 
 <div>
-  <%= link_to "Edit this fridge", edit_fridge_path(@fridge) %> |
-  <%= link_to "Back to fridges", fridges_path %>
+  <%= link_to "Edit this fridge", edit_user_fridge_path(@fridge) %> |
+  <%= link_to "Back", root_path %>
 
-  <%= button_to "Destroy this fridge", @fridge, method: :delete %>
+  <%= button_to "Destroy this fridge", @user_fridge, method: :delete %>
 </div>
