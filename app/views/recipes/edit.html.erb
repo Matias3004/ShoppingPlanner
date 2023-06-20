@@ -1,4 +1,4 @@
-<h1>Szzegóły przepisu:</h1>
+<h1>Szczegóły przepisu:</h1>
 <h2><%= @recipe.name%></h2>
 
 <%= render "form", recipe: @recipe %>
@@ -10,7 +10,9 @@
   <ul>
     <% @recipe.recipe_elements.each do |recipe_element| %>
       <li>
-        <%= recipe_element.name %> | <%= recipe_element.quantity %>
+        <%= recipe_element.name %> |
+        <%= recipe_element.quantity %> |
+        <%= link_to "Edytuj", edit_user_recipe_recipe_element_path(@user, @recipe, recipe_element) %>
       </li>
     <%end%>
   </ul>
@@ -51,4 +53,6 @@
 <div>
 
   <%= link_to "Back", root_path %>
+  <hr>
+  <%= button_to "Usuń przepis", @user_recipe, method: :delete %>
 </div>

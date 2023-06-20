@@ -30,7 +30,7 @@ class FridgeElementsController < ApplicationController
     respond_to do |format|
       if @fridge_element.save
         format.html { redirect_to [@user, @fridge], notice: "Fridge element was successfully created." }
-        format.json { render :show, status: :created, location: @fridge_element }
+        format.json { render :edit, status: :created, location: @fridge_element }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @fridge_element.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class FridgeElementsController < ApplicationController
   def update
     respond_to do |format|
       if @fridge_element.update(fridge_element_params)
-        format.html { redirect_to redirect_to [@user, @fridge], notice: "Fridge element was successfully updated." }
-        format.json { render :show, status: :ok, location: @fridge_element }
+        format.html { redirect_to [@user, @fridge], notice: "Fridge element was successfully updated." }
+        format.json { render :edit, status: :ok, location: @fridge_element }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @fridge_element.errors, status: :unprocessable_entity }

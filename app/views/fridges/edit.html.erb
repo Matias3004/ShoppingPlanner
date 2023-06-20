@@ -8,7 +8,9 @@
   <ul>
     <% @fridge.fridge_elements.each do |fridge_element| %>
       <li>
-        <%= fridge_element.name %> | <%= fridge_element.quantity %>
+        <%= fridge_element.name %> | 
+        <%= fridge_element.quantity %> |
+        <%= link_to "Edytuj", edit_user_fridge_fridge_element_path(@user, @fridge, fridge_element) %>
       </li>
     <%end%>
   </ul>

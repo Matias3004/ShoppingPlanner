@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :fridges, only: [:new, :create, :edit, :update, :show, :destroy] do
       resources :fridge_elements, only: [:new, :create, :edit, :update, :show, :destroy]
     end
-    resources :recipes, only: [:new, :create, :edit, :update, :show, :destroy] do
+    resources :recipes, only: [:new, :create, :edit, :update, :show, :destroy, :delete] do
       resources :recipe_elements, only: [:new, :create, :edit, :update, :show, :destroy]
     end
   end
