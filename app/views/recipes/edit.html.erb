@@ -18,6 +18,33 @@
 
 <%= link_to "Dodaj produkt", new_user_recipe_recipe_element_path(@user, @recipe) %>
 
+<hr>
+
+  <% fridge_elements = FridgeElement.all %>
+  <% missing_elements = []%>
+  <% @recipe_elements.each do |recipe_element|%>
+    <% matching_fridge_element = fridge_elements.find do |fridge_element|%>
+      <% fridge_element.name == recipe_element.name%>
+    <%end%>
+
+    <% if matching_fridge_element%>
+      <% quantity_difference = recipe_element.quantity - matching_fridge_element.quantity%>
+      <% if quantity_difference > 0%>
+        <% copy_recipe_element = recipe_element%>
+        <% copy_recipe_element.quantity=quantity_difference %>
+        <% missing_elements << copy_recipe_element%>
+      <%end%>
+    <%else%>
+      <% missing_elements << recipe_element%>
+    <%end%>
+  <%end%>
+<ul>
+  <% missing_elements.map do |missing_element| %>
+    <li><%=missing_element.name%> | <%= missing_element.quantity %></li>
+  <%end%>
+</ul>
+<hr>
+
 <div>
 
   <%= link_to "Back", root_path %>
