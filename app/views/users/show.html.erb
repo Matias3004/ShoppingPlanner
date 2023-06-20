@@ -3,8 +3,8 @@
 <%= render @user %>
 
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back", root_path %>
+  <%= link_to "Edytuj uzytkownika", edit_user_path(@user) %> |
+  <%= link_to "Powrót", root_path %>
 
-  <%= button_to "Destroy this user", @user, method: :delete %>
+  <%= button_to "Usuń uzytkownika", @user, method: :delete %>
 </div>

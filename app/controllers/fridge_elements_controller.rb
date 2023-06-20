@@ -29,7 +29,7 @@ class FridgeElementsController < ApplicationController
 
     respond_to do |format|
       if @fridge_element.save
-        format.html { redirect_to [@user, @fridge], notice: "Fridge element was successfully created." }
+        format.html { redirect_to [@user, @fridge], notice: "Produkt dodany pomyślnie!" }
         format.json { render :show, status: :created, location: @fridge_element }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class FridgeElementsController < ApplicationController
   def update
     respond_to do |format|
       if @fridge_element.update(fridge_element_params)
-        format.html { redirect_to redirect_to [@user, @fridge], notice: "Fridge element was successfully updated." }
+        format.html { redirect_to redirect_to [@user, @fridge], notice: "Produkt zaktualizowany pomyślnie!" }
         format.json { render :show, status: :ok, location: @fridge_element }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class FridgeElementsController < ApplicationController
     @fridge_element.destroy
 
     respond_to do |format|
-      format.html { redirect_to fridge_elements_url, notice: "Fridge element was successfully destroyed." }
+      format.html { redirect_to fridge_elements_url, notice: "Produkt usunity pomyślnie!" }
       format.json { head :no_content }
     end
   end

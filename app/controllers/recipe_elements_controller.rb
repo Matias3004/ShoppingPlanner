@@ -29,7 +29,7 @@ class RecipeElementsController < ApplicationController
 
     respond_to do |format|
       if @recipe_element.save
-        format.html { redirect_to [@user, @recipe], notice: "Recipe element was successfully created." }
+        format.html { redirect_to [@user, @recipe], notice: "Składnik dodany pomyślnie!" }
         format.json { render :show, status: :created, location: @recipe_element }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class RecipeElementsController < ApplicationController
   def update
     respond_to do |format|
       if @recipe_element.update(recipe_element_params)
-        format.html { redirect_to [@user, @recipe], notice: "Recipe element was successfully updated." }
+        format.html { redirect_to [@user, @recipe], notice: "Składnik zaktualizowany pomyślnie!" }
         format.json { render :show, status: :ok, location: @recipe_element }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class RecipeElementsController < ApplicationController
     @recipe_element.destroy
 
     respond_to do |format|
-      format.html { redirect_to recipe_elements_url, notice: "Recipe element was successfully destroyed." }
+      format.html { redirect_to recipe_elements_url, notice: "Składnik usunięty pomyślnie!" }
       format.json { head :no_content }
     end
   end

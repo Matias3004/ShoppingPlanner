@@ -3,8 +3,8 @@
 <%= render @recipe %>
 
 <div>
-  <%= link_to "Edit this recipe", edit_user_recipe_path(@recipe) %> |
-  <%= link_to "Back", root_path %>
+  <%= link_to "Edytuj przepis", edit_user_recipe_path(@recipe) %> |
+  <%= link_to "Powrót", root_path %>
 
-  <%= button_to "Destroy this recipe", @user_recipe, method: :delete %>
+  <%= button_to "Usuń przepis", @user_recipe, method: :delete %>
 </div>
