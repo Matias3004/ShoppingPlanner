@@ -3,7 +3,9 @@
 
 <%= render "form", recipe: @recipe %>
 
+
 <br>
+<h3>Potrzebne produkty:</h3>
 <div>
   <ul>
     <% @recipe.recipe_elements.each do |recipe_element| %>
@@ -20,6 +22,7 @@
 
 <hr>
 
+<h3>Brakujące produkty:</h3>
   <% fridge_elements = FridgeElement.all %>
   <% missing_elements = []%>
   <% @recipe_elements.each do |recipe_element|%>
